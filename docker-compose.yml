@@ -1,0 +1,28 @@
+# =============================================================================
+# docker-compose.yml - runs Sonatype Nexus Repository (Community Edition)
+#
+#   Start:   docker compose up -d
+#   Logs:    docker logs -f nexus        (wait for "Started Sonatype Nexus")
+#   Browser: http://localhost:8081
+#   Stop:    docker compose stop         (data is kept in the nexus-data volume)
+#
+# The application container itself is deployed by the Jenkins pipeline
+# (stage "Deploy Application"), not by this file, because every pipeline run
+# deploys a NEW version taken from Nexus.
+# =============================================================================
+services:
+  nexus:
+    image: sonatype/nexus3:latest      # multi-arch: works on Apple Silicon and Intel Macs
+    container_name: nexus
+    restart: unless-stopped
+    ports:
+      - "8081:8081"                    # Nexus web UI + repository URLs
+    environment:
+      # Nexus defaults to ~2.7 GB heap. These smaller values are enough for a
+      # lab project and keep a MacBook responsive.
+      INSTALL4J_ADD_VM_PARAMS: "-Xms1500m -Xmx1500m -XX:MaxDirectMemorySize=1500m -Djava.util.prefs.userRoot=/nexus-data/javaprefs"
+    volumes:
+      - nexus-data:/nexus-data         # repositories, users, config survive restarts
+
+volumes:
+  nexus-data:

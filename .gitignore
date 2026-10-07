@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build outputs / downloaded artifacts (these live in Nexus, not in Git)
+dist/
+artifact/
+*.tgz
+
+# Test reports
+reports/
+coverage/
+
+# Secrets - NEVER commit real credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Backups made by scripts/local-pipeline.sh
+*.bak
+
+# OS / editor files
+.DS_Store
+.vscode/
+.idea/
+*.log
+npm-debug.log*

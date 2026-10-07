@@ -1,0 +1,5 @@
+# Allow-list: Docker may ONLY see the artifact downloaded from Nexus.
+# Source code, node_modules, dist/, .env etc. are all excluded, so the image
+# can never be built from local files by accident.
+*
+!artifact/app.tgz

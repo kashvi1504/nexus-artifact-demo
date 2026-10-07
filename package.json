@@ -1,0 +1,50 @@
+{
+  "name": "nexus-artifact-demo",
+  "version": "1.0.0",
+  "description": "Automated Artifact Management Using Nexus Repository - DevOps mini project (Kashvi Vora & Rushabh Vora)",
+  "main": "src/server.js",
+  "files": [
+    "src/"
+  ],
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "jest --ci",
+    "test:coverage": "jest --ci --coverage",
+    "package": "npm pack --pack-destination dist"
+  },
+  "keywords": [
+    "devops",
+    "nexus",
+    "jenkins",
+    "docker",
+    "ci-cd"
+  ],
+  "author": "Kashvi Vora, Rushabh Vora",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^30.0.0",
+    "jest-junit": "^16.0.0",
+    "supertest": "^7.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "reports",
+          "outputName": "junit.xml"
+        }
+      ]
+    ],
+    "coverageDirectory": "reports/coverage"
+  }
+}
