@@ -66,7 +66,7 @@ function renderHomePage(info) {
   </header>
   <main>
     <div class="card">
-      <h2>Deployment status <span class="badge">RUNNING v4</span></h2>
+      <h2>Deployment status <span class="badge">RUNNING v5</span></h2>
       <table>
         <tr><td>Application</td><td>${escapeHtml(info.name)}</td></tr>
         <tr><td>Artifact version</td><td><code>${escapeHtml(info.version)}</code></td></tr>
